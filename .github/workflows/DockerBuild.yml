@@ -1,0 +1,23 @@
+name: Build & Push Docker Image
+
+on: 
+  push:
+    branches:
+      - main  # Runs workflow on pushes to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERTOKEN }}" | docker login -u "sejalkamboj" --password-stdin
+
+      - name: Build Docker Image
+        run: docker build -t sejalkamboj/upesmajorproject:v0.1 .
+
+      - name: Push Docker Image
+        run: docker push sejalkamboj/upesmajorproject:v0.1
