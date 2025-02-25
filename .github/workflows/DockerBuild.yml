@@ -20,4 +20,4 @@ jobs:
         run: docker build -t sejalkamboj/upesmajorproject:v0.1 .
 
       - name: Push Docker Image
-        run: docker push sejalkamboj/upesmajorproject:v0.1
+        run: docker push sejalkamboj11/upesmajorproject:v0.1
